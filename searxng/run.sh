@@ -24,7 +24,7 @@ echo
 if docker inspect "$IMAGE_NAME" &>/dev/null; then
 	echo -e "${GREEN}[+] Searxng container is installed!${NC}"
 	echo -e "${YELLOW}[*] Starting container...${NC}"
-	if docker ps --filter "name=$IMAGE_NAME" &>/dev/null; then
+	if ! docker ps --filter "name=$IMAGE_NAME" &>/dev/null; then
 		echo -e "${RED}[!] Docker is already running!${NC}"
 		exit 0;
 	else
